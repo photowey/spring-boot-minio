@@ -67,6 +67,10 @@
         <maven-git-commit-id-plugin.version>4.9.10</maven-git-commit-id-plugin.version>
 
         <minio.version>8.5.0</minio.version>
+        <okhttp.version>4.12.0</okhttp.version>
+
+        <lombok.version>1.18.34</lombok.version>
+        <slf4j.version>1.7.36</slf4j.version>
 
         <spring.version>5.3.23</spring.version>
         <spring-boot.version>2.7.5</spring-boot.version>
@@ -84,9 +88,37 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
 
             <dependency>
@@ -99,16 +131,14 @@
                 <artifactId>spring-boot-minio-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
-            <!-- starter -->
             <dependency>
                 <groupId>io.github.photowey</groupId>
-                <artifactId>kafkaplus-spring-boot3-starter</artifactId>
+                <artifactId>minio-spring-boot3-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.photowey</groupId>
-                <artifactId>kafkaplus-spring-boot-starter</artifactId>
+                <artifactId>minio-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -256,6 +286,8 @@ limitations under the License.
                         <email>photowey@gmail.com</email>
                     </properties>
                     <excludes>
+                        <exclude>.editorconfig</exclude>
+                        <exclude>.gitattributes</exclude>
                         <exclude>.gitignore</exclude>
                         <exclude>LICENSE</exclude>
                         <exclude>**/.mvn/**</exclude>
