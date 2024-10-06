@@ -89,7 +89,7 @@ public abstract class AbstractMinIOConfigure {
      * @param minioClient {@link MinioClient}
      * @return {@link MinioTemplate}
      */
-    @Bean
+    @Bean(MinioTemplate.MINIO_TEMPLATE_BEAN_NAME)
     @ConditionalOnMissingBean
     @ConditionalOnExpression("${spring.minio.sync.enabled:true}")
     public MinioTemplate minioTemplate(MinioClient minioClient) {
@@ -103,10 +103,11 @@ public abstract class AbstractMinIOConfigure {
      * @param minioClient {@link MinioAsyncClient}
      * @return {@link AsyncMinioTemplate}
      */
-    @Bean
+    @Bean(AsyncMinioTemplate.MINIO_TEMPLATE_BEAN_NAME)
     @ConditionalOnMissingBean
     @ConditionalOnExpression("${spring.minio.async.enabled:false}")
-    public AsyncMinioTemplate minioTemplate(MinioAsyncClient minioClient) {
+    public AsyncMinioTemplate asyncMinioTemplate(MinioAsyncClient minioClient) {
+        // unsupported now.
         return new DefaultAsyncMinioTemplate(minioClient);
     }
 }

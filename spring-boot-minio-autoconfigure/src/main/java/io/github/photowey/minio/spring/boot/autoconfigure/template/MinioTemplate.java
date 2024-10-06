@@ -34,6 +34,8 @@ import java.util.concurrent.TimeUnit;
  */
 public interface MinioTemplate {
 
+    String MINIO_TEMPLATE_BEAN_NAME = "minioTemplate";
+
     String DEFAULT_STREAM_CONTENT_TYPE = "application/octet-stream";
 
     // ----------------------------------------------------------------
