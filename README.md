@@ -34,7 +34,7 @@ https://central.sonatype.com/search?q=minio-spring-boot-starter&namespace=io.git
 <dependency>
     <groupId>io.github.photowey</groupId>
     <artifactId>minio-spring-boot-starter</artifactId>
-    <version>${lastest.version}</version>
+    <version>${latest.version}</version>
 </dependency>
 ```
 
@@ -46,7 +46,7 @@ https://central.sonatype.com/search?q=minio-spring-boot-starter&namespace=io.git
 <dependency>
     <groupId>io.github.photowey</groupId>
     <artifactId>minio-spring-boot3-starter</artifactId>
-    <version>${lastest.version}</version>
+    <version>${latest.version}</version>
 </dependency>
 ```
 
@@ -56,7 +56,7 @@ https://central.sonatype.com/search?q=minio-spring-boot-starter&namespace=io.git
 
 ### 3.1.`MiniTemplate`
 
-`MinioTemplate` as same as `SyncMinioTemplate` `.
+`MinioTemplate` as same as `SyncMinioTemplate`.
 
 #### 3.1.1.`Bucket`
 
