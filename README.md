@@ -56,7 +56,7 @@ https://central.sonatype.com/search?q=minio-spring-boot-starter&namespace=io.git
 
 ### 3.1.`MiniTemplate`
 
-`SyncMinioTemplate` as same as `MiniTemplate`.
+`MinioTemplate` as same as `SyncMinioTemplate` `.
 
 #### 3.1.1.`Bucket`
 
@@ -86,4 +86,26 @@ https://central.sonatype.com/search?q=minio-spring-boot-starter&namespace=io.git
 
 ### 3.2.`AsyncMinioTemplate`
 
-⭐⭐⭐Unsupported now.
+#### 3.2.1.`Bucket`
+
+- `bucketExists`
+- `createBucket`
+- `removeBucket`
+- `buckets`
+
+#### 3.2.2.`Put`
+
+- `putObject`
+
+#### 3.2.3.`Download`
+
+- `getObject`
+- `downloadObject`
+
+#### 3.2.4.`Stat`
+
+- `statObject`
+
+#### 3.2.5.`URL`
+
+- `getPresignedObjectUrl`

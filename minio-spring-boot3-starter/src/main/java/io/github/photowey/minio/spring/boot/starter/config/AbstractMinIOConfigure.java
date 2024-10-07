@@ -98,7 +98,6 @@ public abstract class AbstractMinIOConfigure {
 
     /**
      * {@link AsyncMinioTemplate}
-     * |- Unsupported now.
      *
      * @param minioClient {@link MinioAsyncClient}
      * @return {@link AsyncMinioTemplate}
@@ -107,7 +106,6 @@ public abstract class AbstractMinIOConfigure {
     @ConditionalOnMissingBean
     @ConditionalOnExpression("${spring.minio.async.enabled:false}")
     public AsyncMinioTemplate asyncMinioTemplate(MinioAsyncClient minioClient) {
-        // unsupported now.
         return new DefaultAsyncMinioTemplate(minioClient);
     }
 }

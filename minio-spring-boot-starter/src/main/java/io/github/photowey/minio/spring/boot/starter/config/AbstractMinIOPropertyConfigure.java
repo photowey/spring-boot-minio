@@ -34,7 +34,7 @@ public abstract class AbstractMinIOPropertyConfigure {
     static class PropertyConfigure {
 
         @Bean
-        public MinIOProperties kafkaPlusProperties(Environment environment) {
+        public MinIOProperties minioProperties(Environment environment) {
             return bind(environment, MinIOProperties.getPrefix(), MinIOProperties.class);
         }
     }
