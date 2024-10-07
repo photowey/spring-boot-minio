@@ -320,6 +320,9 @@ limitations under the License.
     <profiles>
         <profile>
             <id>release</id>
+            <properties>
+                <gpg.keyname>${env.MAVEN_CENTRAL_KEY_NAME}</gpg.keyname>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -353,6 +356,9 @@ limitations under the License.
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <keyname>${gpg.keyname}</keyname>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.sonatype.central</groupId>
