@@ -18,7 +18,7 @@ package io.github.photowey.minio.spring.boot.starter.config;
 import io.github.photowey.minio.spring.boot.autoconfigure.property.MinIOProperties;
 import io.github.photowey.minio.spring.boot.autoconfigure.template.AsyncMinioTemplate;
 import io.github.photowey.minio.spring.boot.autoconfigure.template.DefaultAsyncMinioTemplate;
-import io.github.photowey.minio.spring.boot.autoconfigure.template.MinioTemplate;
+import io.github.photowey.minio.spring.boot.autoconfigure.template.DefaultSyncMinioTemplate;
 import io.github.photowey.minio.spring.boot.autoconfigure.template.SyncMinioTemplate;
 import io.minio.MinioAsyncClient;
 import io.minio.MinioClient;
@@ -84,16 +84,16 @@ public abstract class AbstractMinIOConfigure {
     }
 
     /**
-     * {@link MinioTemplate}
+     * {@link SyncMinioTemplate}
      *
      * @param minioClient {@link MinioClient}
-     * @return {@link MinioTemplate}
+     * @return {@link SyncMinioTemplate}
      */
-    @Bean(MinioTemplate.MINIO_TEMPLATE_BEAN_NAME)
+    @Bean(SyncMinioTemplate.MINIO_TEMPLATE_BEAN_NAME)
     @ConditionalOnMissingBean
     @ConditionalOnExpression("${spring.minio.sync.enabled:true}")
-    public MinioTemplate minioTemplate(MinioClient minioClient) {
-        return new SyncMinioTemplate(minioClient);
+    public SyncMinioTemplate minioTemplate(MinioClient minioClient) {
+        return new DefaultSyncMinioTemplate(minioClient);
     }
 
     /**

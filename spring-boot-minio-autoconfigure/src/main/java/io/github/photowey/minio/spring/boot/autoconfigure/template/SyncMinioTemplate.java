@@ -15,130 +15,14 @@
  */
 package io.github.photowey.minio.spring.boot.autoconfigure.template;
 
-import io.minio.*;
-import io.minio.messages.Bucket;
-
-import java.io.InputStream;
-import java.util.List;
-
 /**
  * {@code SyncMinioTemplate}
  *
  * @author photowey
  * @version 1.0.0
- * @since 2024/10/06
+ * @since 2024/10/07
  */
-public class SyncMinioTemplate implements MinioTemplate {
+public interface SyncMinioTemplate extends MinioTemplate {
 
-    private final MinioClient minioClient;
-
-    public SyncMinioTemplate(MinioClient minioClient) {
-        this.minioClient = minioClient;
-    }
-
-    // ----------------------------------------------------------------- bucket
-
-    @Override
-    public boolean bucketExists(String bucket) {
-        return this.call(() -> {
-            BucketExistsArgs args = BucketExistsArgs.builder()
-                .bucket(bucket)
-                .build();
-
-            return this.minioClient.bucketExists(args);
-        });
-    }
-
-    // -----------------------------------------------------------------
-
-    @Override
-    public boolean createBucket(String bucket) {
-        return this.call(() -> {
-            if (this.bucketExists(bucket)) {
-                return false;
-            }
-
-            MakeBucketArgs args = MakeBucketArgs.builder()
-                .bucket(bucket)
-                .build();
-            this.minioClient.makeBucket(args);
-
-            return true;
-        });
-    }
-
-    @Override
-    public boolean removeBucket(String bucket) {
-        return this.call(() -> {
-            RemoveBucketArgs args = RemoveBucketArgs.builder()
-                .bucket(bucket)
-                .build();
-            this.minioClient.removeBucket(args);
-
-            return true;
-        });
-    }
-
-    @Override
-    public List<Bucket> buckets() {
-        return this.call(this.minioClient::listBuckets);
-    }
-
-    // -----------------------------------------------------------------
-
-    @Override
-    public ObjectWriteResponse putObject(String bucket, String object, String contextType, InputStream in, long size) {
-        return this.call(() -> {
-            PutObjectArgs args = PutObjectArgs.builder()
-                .bucket(bucket)
-                .object(object)
-                .stream(in, size, -1)
-                .contentType(contextType)
-                .build();
-
-            return this.minioClient.putObject(args);
-        });
-    }
-
-    // -----------------------------------------------------------------
-
-    @Override
-    public InputStream downloadObject(String bucket, String object) {
-        return this.call(() -> {
-            GetObjectArgs args = GetObjectArgs.builder()
-                .bucket(bucket)
-                .object(object)
-                .build();
-
-            return this.minioClient.getObject(args);
-        });
-    }
-
-    @Override
-    public boolean downloadObject(DownloadObjectArgs args) {
-        return this.call(() -> {
-            this.minioClient.downloadObject(args);
-
-            return true;
-        });
-    }
-
-    // -----------------------------------------------------------------
-
-    @Override
-    public StatObjectResponse statObject(StatObjectArgs args) {
-        return this.call(() -> {
-            return this.minioClient.statObject(args);
-        });
-    }
-
-    // -----------------------------------------------------------------
-
-    @Override
-    public String url(GetPresignedObjectUrlArgs args) {
-        return this.call(() -> {
-            return this.minioClient.getPresignedObjectUrl(args);
-        });
-    }
+    String MINIO_TEMPLATE_BEAN_NAME = "minioTemplate";
 }
-
