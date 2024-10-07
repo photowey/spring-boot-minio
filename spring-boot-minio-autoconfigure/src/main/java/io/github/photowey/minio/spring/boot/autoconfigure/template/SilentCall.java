@@ -15,11 +15,32 @@
  */
 package io.github.photowey.minio.spring.boot.autoconfigure.template;
 
+import io.github.photowey.minio.spring.boot.core.exception.MinioException;
+
+import java.util.concurrent.Callable;
+
 /**
- * {@code MinioTemplate}
+ * {@code SilentCall}
  *
  * @author photowey
- * @version 1.0.0
- * @since 2024/10/06
+ * @version 1.1.0
+ * @since 2024/10/07
  */
-public interface MinioTemplate extends SyncMinioTemplate {}
+public interface SilentCall {
+
+    default void run(Runnable task) {
+        try {
+            task.run();
+        } catch (Exception e) {
+            throw new MinioException(e);
+        }
+    }
+
+    default <T> T call(Callable<T> task) {
+        try {
+            return task.call();
+        } catch (Exception e) {
+            throw new MinioException(e);
+        }
+    }
+}

@@ -28,7 +28,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 2024/10/06
  */
-public class DefaultSyncMinioTemplate implements SyncMinioTemplate {
+public class DefaultSyncMinioTemplate implements MinioTemplate {
 
     private final MinioClient minioClient;
 
