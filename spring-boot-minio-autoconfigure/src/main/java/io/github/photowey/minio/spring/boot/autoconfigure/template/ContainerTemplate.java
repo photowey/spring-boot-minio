@@ -15,14 +15,17 @@
  */
 package io.github.photowey.minio.spring.boot.autoconfigure.template;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+
 /**
- * {@code StreamingTemplate}
+ * {@code ContainerTemplate}
  *
  * @author photowey
  * @version 1.1.0
  * @since 2024/10/07
  */
-public interface StreamingTemplate extends ContainerTemplate {
+public interface ContainerTemplate extends BeanFactoryAware {
 
-    String DEFAULT_STREAM_CONTENT_TYPE = "application/octet-stream";
+    BeanFactory beanFactory();
 }

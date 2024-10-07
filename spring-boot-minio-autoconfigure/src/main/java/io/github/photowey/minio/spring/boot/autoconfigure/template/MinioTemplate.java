@@ -22,4 +22,14 @@ package io.github.photowey.minio.spring.boot.autoconfigure.template;
  * @version 1.0.0
  * @since 2024/10/06
  */
-public interface MinioTemplate extends SyncMinioTemplate {}
+public interface MinioTemplate extends SyncMinioTemplate {
+
+    /**
+     * Try acquire Sync template {@link SyncMinioTemplate}.
+     *
+     * @return {@link SyncMinioTemplate}
+     */
+    default SyncMinioTemplate sync() {
+        return this.beanFactory().getBean(SyncMinioTemplate.class);
+    }
+}

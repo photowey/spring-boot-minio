@@ -17,6 +17,9 @@ package io.github.photowey.minio.spring.boot.autoconfigure.template;
 
 import io.minio.*;
 import io.minio.messages.Bucket;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
 import java.io.InputStream;
 import java.util.List;
@@ -32,8 +35,22 @@ public class DefaultSyncMinioTemplate implements MinioTemplate {
 
     private final MinioClient minioClient;
 
+    private ConfigurableListableBeanFactory beanFactory;
+
     public DefaultSyncMinioTemplate(MinioClient minioClient) {
         this.minioClient = minioClient;
+    }
+
+    // -----------------------------------------------------------------
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        this.beanFactory = (ConfigurableListableBeanFactory) beanFactory;
+    }
+
+    @Override
+    public BeanFactory beanFactory() {
+        return this.beanFactory;
     }
 
     // ----------------------------------------------------------------- bucket

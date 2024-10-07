@@ -36,6 +36,17 @@ public interface SyncMinioTemplate extends StreamingTemplate, SilentCall {
 
     // ----------------------------------------------------------------
 
+    /**
+     * Try acquire Async template {@link AsyncMinioTemplate}.
+     *
+     * @return {@link AsyncMinioTemplate}
+     */
+    default AsyncMinioTemplate async() {
+        return this.beanFactory().getBean(AsyncMinioTemplate.class);
+    }
+
+    // ----------------------------------------------------------------
+
     default boolean bucketNotExists(String bucket) {
         return !this.bucketExists(bucket);
     }
