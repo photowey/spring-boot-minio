@@ -38,6 +38,18 @@ public interface AsyncMinioTemplate extends StreamingTemplate, SilentCall {
     // ----------------------------------------------------------------
 
     /**
+     * Try acquire Async MinioClient {@link MinioAsyncClient}.
+     *
+     * @return {@link MinioAsyncClient}
+     */
+
+    default MinioAsyncClient client() {
+        return this.beanFactory().getBean(MinioAsyncClient.class);
+    }
+
+    // ----------------------------------------------------------------
+
+    /**
      * Try acquire Sync template {@link SyncMinioTemplate}.
      *
      * @return {@link SyncMinioTemplate}
