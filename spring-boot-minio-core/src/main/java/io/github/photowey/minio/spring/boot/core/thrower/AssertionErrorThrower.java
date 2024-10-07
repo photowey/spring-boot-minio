@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.photowey.minio.spring.boot.autoconfigure.template;
+package io.github.photowey.minio.spring.boot.core.thrower;
 
 /**
- * {@code MinioTemplate}
+ * {@code AssertionErrorThrower}
  *
  * @author photowey
- * @version 1.0.0
- * @since 2024/10/06
+ * @version 1.1.0
+ * @since 2024/10/07
  */
-public interface MinioTemplate extends SyncMinioTemplate {
+public final class AssertionErrorThrower {
 
-    /**
-     * Try acquire Sync template {@link SyncMinioTemplate}.
-     *
-     * @return {@link SyncMinioTemplate}
-     */
-    default SyncMinioTemplate sync() {
-        return this.beanFactory().getBean(SyncMinioTemplate.class);
+    private AssertionErrorThrower() {
+        // utility class; can't create
+        throwz(AssertionErrorThrower.class);
+    }
+
+    public static <T> void throwz(Class<T> clazz) {
+        throw new AssertionError("No " + clazz.getName() + " instances for you!");
     }
 }

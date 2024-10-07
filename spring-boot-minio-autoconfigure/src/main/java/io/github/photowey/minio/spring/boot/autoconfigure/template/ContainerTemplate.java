@@ -15,21 +15,17 @@
  */
 package io.github.photowey.minio.spring.boot.autoconfigure.template;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+
 /**
- * {@code MinioTemplate}
+ * {@code ContainerTemplate}
  *
  * @author photowey
- * @version 1.0.0
- * @since 2024/10/06
+ * @version 1.1.0
+ * @since 2024/10/07
  */
-public interface MinioTemplate extends SyncMinioTemplate {
+public interface ContainerTemplate extends BeanFactoryAware {
 
-    /**
-     * Try acquire Sync template {@link SyncMinioTemplate}.
-     *
-     * @return {@link SyncMinioTemplate}
-     */
-    default SyncMinioTemplate sync() {
-        return this.beanFactory().getBean(SyncMinioTemplate.class);
-    }
+    BeanFactory beanFactory();
 }

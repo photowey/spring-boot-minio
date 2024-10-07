@@ -10,7 +10,9 @@
     <packaging>pom</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>An extender of MinIO (the "MinIO").</description>
+    <description>An extender of MinIO (the "MinIO") for Spring Boot. Supports two modes:
+        MinioTemplate(SyncMinioTemplate) and AsyncMinioTemplate.
+    </description>
     <url>${io.github.photowey.project.url}</url>
 
     <inceptionYear>2024</inceptionYear>
@@ -52,7 +54,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reversion>1.0.0</reversion>
+        <reversion>1.1.0-SNAPSHOT</reversion>
 
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-flatten-plugin.version>1.2.7</maven-flatten-plugin.version>
