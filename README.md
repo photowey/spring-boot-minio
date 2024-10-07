@@ -1,6 +1,6 @@
 # `spring-boot-minio`
 
-An extender of `MinIO` (the "`MinIO`") for `Spring Boot`.
+An extender of `MinIO` (the "`MinIO`") for `Spring Boot`. Supports two modes: `MinioTemplate`(`SyncMinioTemplate`) and `AsyncMinioTemplate`.
 
 
 
