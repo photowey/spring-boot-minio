@@ -22,4 +22,8 @@ package io.github.photowey.minio.spring.boot.autoconfigure.template;
  * @version 1.0.0
  * @since 2024/10/06
  */
-public interface AsyncMinioTemplate {}
+public interface AsyncMinioTemplate {
+
+    String MINIO_TEMPLATE_BEAN_NAME = "asyncMinioTemplate";
+
+}
