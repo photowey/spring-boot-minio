@@ -37,7 +37,7 @@ public interface SyncMinioTemplate extends StreamingTemplate, SilentCall {
     // ----------------------------------------------------------------
 
     /**
-     * Try acquire Sync MinioClient {@link MinioClient}.
+     * Try acquire Sync MinIO client {@link MinioClient}.
      *
      * @return {@link MinioClient}
      */
